@@ -1,0 +1,5 @@
+clerk
+autopen
+others?
+
+what growth mechanics to use?

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cavgbb0otl4hg"]
+
+[ext_resource type="Script" uid="uid://br03nvflmbaxo" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://ja6h67d0psy2" path="res://assets/container.png" id="1_ig7tw"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_0xm2m")
+
+[node name="Container" type="Sprite2D" parent="."]
+position = Vector2(284, 304)
+scale = Vector2(0.315, 0.315)
+texture = ExtResource("1_ig7tw")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 94.0
+offset_top = 141.0
+offset_right = 472.0
+offset_bottom = 469.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 779.0
+offset_top = 289.0
+offset_right = 1046.0
+offset_bottom = 428.0
+theme_override_font_sizes/normal_font_size = 84
+text = "0"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
