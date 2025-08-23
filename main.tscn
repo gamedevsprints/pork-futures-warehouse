@@ -19,11 +19,41 @@ offset_right = 472.0
 offset_bottom = 469.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 779.0
-offset_top = 289.0
-offset_right = 1046.0
-offset_bottom = 428.0
+offset_left = 572.0
+offset_top = 94.0
+offset_right = 1142.0
+offset_bottom = 233.0
 theme_override_font_sizes/normal_font_size = 84
-text = "0"
+text = "0 contracts
+"
+
+[node name="Control" type="VBoxContainer" parent="."]
+offset_left = 544.0
+offset_top = 257.0
+offset_right = 1122.0
+offset_bottom = 612.0
+
+[node name="ShopRichTextLabel" type="RichTextLabel" parent="Control"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "Shop"
+horizontal_alignment = 1
+
+[node name="BuyCerkButton" type="Button" parent="Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Buy Clerk - %s contracts"
+
+[node name="BuyAutopenButton" type="Button" parent="Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Buy Clerk - %s contracts"
+
+[node name="ProductionTimer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/BuyCerkButton" to="." method="_on_buy_cerk_button_button_down"]
+[connection signal="button_down" from="Control/BuyAutopenButton" to="." method="_on_buy_autopen_button_button_down"]
+[connection signal="timeout" from="ProductionTimer" to="." method="_on_production_timer_timeout"]
