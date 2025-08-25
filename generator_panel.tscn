@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0kbb8n5inu08"]
+
+[ext_resource type="Script" uid="uid://buh6psnd0mhfl" path="res://generator_panel.gd" id="1_wkv6j"]
+
+[node name="GeneratorPanel" type="Panel"]
+script = ExtResource("1_wkv6j")
+base_price = 10
+growth_rate = 1.15
+production_rate = 1
+generator_name = "myname"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="GeneratorNameLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "placeholdername"
+
+[node name="CountLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "placse"
+
+[node name="CostLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "placeholdercost"
+
+[node name="BuyButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "Buy"
+
+[connection signal="button_down" from="VBoxContainer/BuyButton" to="." method="_on_buy_button_button_down"]
