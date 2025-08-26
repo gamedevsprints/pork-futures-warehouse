@@ -7,50 +7,91 @@
 [node name="main" type="Node2D"]
 script = ExtResource("1_0xm2m")
 
-[node name="Container" type="Sprite2D" parent="."]
+[node name="ContractSprite" type="Sprite2D" parent="."]
 position = Vector2(284, 304)
 scale = Vector2(0.315, 0.315)
 texture = ExtResource("1_ig7tw")
 
-[node name="Button" type="Button" parent="."]
+[node name="ReferenceRect1" type="ReferenceRect" parent="."]
+offset_left = 519.0
+offset_top = 93.0
+offset_right = 784.0
+offset_bottom = 645.0
+border_color = Color(0, 0, 0, 1)
+border_width = 5.0
+editor_only = false
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="."]
+offset_left = 803.0
+offset_top = 93.0
+offset_right = 1149.0
+offset_bottom = 645.0
+border_color = Color(0, 0, 0, 1)
+border_width = 5.0
+editor_only = false
+
+[node name="ReferenceRect3" type="ReferenceRect" parent="."]
+offset_left = 4.0
+offset_top = 521.0
+offset_right = 502.0
+offset_bottom = 645.0
+border_color = Color(0, 0, 0, 1)
+border_width = 5.0
+editor_only = false
+
+[node name="CenterContainer" type="CenterContainer" parent="ReferenceRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="RichTextLabel" parent="ReferenceRect3/CenterContainer"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(490, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "0 contracts
+"
+
+[node name="ReferenceRect4" type="ReferenceRect" parent="."]
+offset_left = 55.0
+offset_top = 93.0
+offset_right = 502.0
+offset_bottom = 517.0
+border_color = Color(0, 0, 0, 1)
+border_width = 5.0
+editor_only = false
+
+[node name="ContractButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
 offset_left = 94.0
 offset_top = 141.0
 offset_right = 472.0
 offset_bottom = 469.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 37.0
-offset_top = 508.0
-offset_right = 697.0
-offset_bottom = 647.0
-theme_override_font_sizes/normal_font_size = 84
-text = "0 contracts
-"
-
-[node name="Control" type="VBoxContainer" parent="."]
-visible = false
-offset_left = 544.0
-offset_top = 257.0
-offset_right = 1122.0
-offset_bottom = 612.0
-
-[node name="ShopRichTextLabel" type="RichTextLabel" parent="Control"]
+[node name="ShopRichTextLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(300, 80)
-layout_mode = 2
+offset_left = 682.0
+offset_top = 84.0
+offset_right = 1260.0
+offset_bottom = 164.0
 theme_override_font_sizes/normal_font_size = 50
 text = "Shop"
 horizontal_alignment = 1
 
-[node name="BuyCerkButton" type="Button" parent="Control"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Buy Clerk - %s contracts"
-
-[node name="BuyAutopenButton" type="Button" parent="Control"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Buy Clerk - %s contracts"
+[node name="StaffLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(300, 80)
+offset_left = 349.0
+offset_top = 86.0
+offset_right = 927.0
+offset_bottom = 166.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Staff
+"
+horizontal_alignment = 1
 
 [node name="ProductionTimer" type="Timer" parent="."]
 autostart = true
@@ -68,10 +109,10 @@ custom_minimum_size = Vector2(300, 500)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 739.0
-offset_top = 129.0
-offset_right = 1082.0
-offset_bottom = 629.0
+offset_left = 805.0
+offset_top = 168.0
+offset_right = 1148.0
+offset_bottom = 668.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -104,7 +145,7 @@ layout_mode = 2
 base_price = 12000
 production_rate = 250
 generator_name = "Manager"
-unlock_score = 8000
+unlock_score = 10000
 
 [node name="Trader" parent="Generators" instance=ExtResource("3_h2yge")]
 custom_minimum_size = Vector2(0, 75)
@@ -112,7 +153,7 @@ layout_mode = 2
 base_price = 130000
 production_rate = 1500
 generator_name = "Trader"
-unlock_score = 80000
+unlock_score = 100000
 
 [node name="Federal Pork Reserve" parent="Generators" instance=ExtResource("3_h2yge")]
 custom_minimum_size = Vector2(0, 75)
@@ -120,10 +161,11 @@ layout_mode = 2
 base_price = 250000
 production_rate = 3000
 generator_name = "Federal Pork Reserve"
-unlock_score = 800000
+unlock_score = 210000
 
 [node name="DebugPanel" type="Panel" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_right = 117.0
 offset_bottom = 75.0
 
@@ -140,8 +182,6 @@ offset_top = 40.0
 offset_right = 105.0
 offset_bottom = 70.0
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
-[connection signal="button_down" from="Control/BuyCerkButton" to="." method="_on_buy_cerk_button_button_down"]
-[connection signal="button_down" from="Control/BuyAutopenButton" to="." method="_on_buy_autopen_button_button_down"]
+[connection signal="button_down" from="ContractButton" to="." method="_on_contract_button_button_down"]
 [connection signal="timeout" from="ProductionTimer" to="." method="_on_production_timer_timeout"]
 [connection signal="button_down" from="DebugPanel/debugButton" to="." method="_on_debug_button_button_down"]

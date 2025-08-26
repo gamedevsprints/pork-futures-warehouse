@@ -5,7 +5,7 @@
 [node name="GeneratorPanel" type="Panel"]
 script = ExtResource("1_wkv6j")
 base_price = 10
-growth_rate = 1.15
+growth_rate = 1.25
 production_rate = 1
 generator_name = "myname"
 
@@ -22,11 +22,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "placeholdername"
 
-[node name="CountLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "placse"
-
 [node name="CostLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -37,5 +32,14 @@ unique_name_in_owner = true
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 text = "Buy"
+
+[node name="CountLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = -249.0
+offset_top = 3.0
+offset_right = -200.0
+offset_bottom = 26.0
+text = "placse"
 
 [connection signal="button_down" from="VBoxContainer/BuyButton" to="." method="_on_buy_button_button_down"]
